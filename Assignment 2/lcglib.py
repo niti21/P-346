@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# In[9]:
+# In[34]:
 
 
 get_ipython().run_line_magic('matplotlib', 'inline')
@@ -14,6 +14,15 @@ x = 10
 def lcg(a,c,m,x):
     y = ((a*x + c) % m)/m
     return y
+def lcgshow(a,c,m,x):
+    rnum = []
+    for i in range(0,500):
+        y = (a*x + c) % m
+        rnum.append(y)
+        x=y
+        i= i+1  
+        plt=plot.scatter(i, y) 
+    return rnum
 def lcgplot(a,c,m,x):
     rnum = []
     for i in range(0,500):
@@ -23,8 +32,15 @@ def lcgplot(a,c,m,x):
         i= i+1  
         plt=plot.scatter(i, y) 
     return plt
+
 def display(x):
-    print(lcg(1103515245, 12345, 32768, x))
+    print(lcgshow(1103515245, 12345, 32768, x))
     lcgplot(1103515245, 12345, 32768, x)
         
+
+
+# In[ ]:
+
+
+
 
