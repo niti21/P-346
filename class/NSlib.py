@@ -309,19 +309,19 @@ def jacobi(a,b,it,tol):
 
 # In[5]:
 #Defining functions
-def f(q):
+def fc(q):
     y = (q**4) - (q**3)-7*(q**2) + q + 6
     return y
-def derivF(q):
+def derivFc(q):
     y = 4*(q**3)- 3*(q**2) -14*(q) + 1
     return y
-def deriv2F(q):
+def deriv2Fc(q):
     y = 12*(q**2)- 6*(q) -14 
     return y
 
 
 #To find derivative
-def df(c1):
+def dfc(c1):
     l = len(c1)
     for i in range (0,l):
         c1[i]= c1[i]*i
@@ -330,7 +330,7 @@ def df(c1):
     return cf
 
 #to find 2nd derivative
-def d2f(c2):
+def d2fc(c2):
     for i in range (1,l+2):
         c2[i]= c2[i]*(i-1)
     return c2
@@ -369,13 +369,13 @@ def bracket(a,b,func):
     return call
 
 #Bisection Method
-def bisection(a,b):
+def bisection(a,b,tol):
     if (f(a)*f(b)>=0):
         print('wrong interval')
     c = a
     print ("%10.2E" %a, "%10.2E" %f(a))
     print ("%10.2E" %b, "%10.2E" %f(b))
-    while ((b-a)>= 0.000001):
+    while ((b-a)>= tol):
         for i in range(15):
             c=(a+b)/2
             if (f(c)==0):
@@ -388,7 +388,7 @@ def bisection(a,b):
     return c
 
 #Regula Falsi Method
-def regulaFalsi(a,b):
+def regulaFalsi(a,b,tol):
     if f(a) * f(b) >= 0:
         print("Wrong interval")
         return -1
@@ -400,7 +400,7 @@ def regulaFalsi(a,b):
         #point touching x axis
         c = (b - ((b - a) * f(b))/ (f(b) - f(a))) 
         # Find root
-        if f(c) == 0.0001:
+        if f(c) == tol:
             break
         elif f(c) * f(a) < 0:
             b = c
@@ -510,10 +510,10 @@ def laguerre_2(c,z,degree):
 
 
 #Newton raphson method
-def newtonRaphson(q):
+def newtonRaphson(q,tol):
     t=0
     h = f(q) / derivF(q)
-    while abs(h) >= 0.000001:
+    while abs(h) >= tol:
         h = f(q)/derivF(q)
         q = q - h
         t=t+1
@@ -685,8 +685,8 @@ def Simpsons( l, u, n ):
     return res
 
 #Finding N
-def f(x):
-    return 1/x
+#def f(x):
+#    return 1/x
 
 def N_simp(l,u,t):
     N = ((1/180*t)*24)**(1/4)
