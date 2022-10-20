@@ -2,6 +2,18 @@
 # coding: utf-8
 
 # In[1]:
+#with open('a1.txt', 'r') as f1:
+ #   a = [[int(num) for num in line.split(',')] for line in f1 ]
+#print(a)
+#print()
+#b1 = open('b1.txt', 'r')
+#b= b1.read().split(',')
+#for i in range(0,len(b)):
+ #   b[i]=int(b[i])
+#print(b)
+#opening the file with value of N
+#f = open('input1.txt', 'r')
+#content = f.readlines()
 
 
 get_ipython().run_line_magic('matplotlib', 'inline')
